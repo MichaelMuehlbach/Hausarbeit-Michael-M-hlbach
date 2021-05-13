@@ -1,0 +1,34 @@
+﻿@page
+@model Tischtennis_Shop.Pages.BelaegeKaufenModel
+@{ ViewData["Title"] = "Belag Kaufen";
+}
+<p>
+    <img height="300" width="300" src="@Model.Belag.Bildpfad" />
+</p>
+<form method="post">
+    <p>
+        <textarea readonly style="height:50px;width:200px;"> @Model.Belag.Marke </textarea>
+        <textarea asp-for="Name" readonly style="height:50px;width:200px;"> @Model.Belag.Name </textarea>
+        <textarea readonly style="height:50px;width:100px;"> @Model.Belag.Preis € </textarea>
+    </p>
+    <p>
+        <input type="radio" id="mc" name="Farbe" asp-for="Farbe"  value="Rot">
+        <label for="mc"> Rot</label>
+        <input type="radio" id="vi" name="Farbe" asp-for="Farbe"  value="Schwarz">
+        <label for="vi"> Schwarz</label>
+    </p>
+    <p>
+        <label>ab einer Menge von 5 Stück bekommen Sie pro Belag 3 Euro Rabatt</label>
+    </p>
+  
+
+    <p>
+        <textarea asp-for="Menge" maxlength="2" style="height:40px;width:80px;"></textarea>
+    </p>
+    <p>
+        <input type="submit"  value="Kaufen" />
+    </p>
+</form>
+
+
+

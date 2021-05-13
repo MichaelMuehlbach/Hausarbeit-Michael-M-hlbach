@@ -1,0 +1,71 @@
+﻿@page
+@model Tischtennis_Shop.Pages.Belaege.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Belag</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Belag.Belag_Art" class="control-label"></label>
+                <input asp-for="Belag.Belag_Art" class="form-control" />
+                <span asp-validation-for="Belag.Belag_Art" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Belag.Menge_Schwarz" class="control-label"></label>
+                <input asp-for="Belag.Menge_Schwarz" class="form-control" />
+                <span asp-validation-for="Belag.Menge_Schwarz" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Belag.Menge_Rot" class="control-label"></label>
+                <input asp-for="Belag.Menge_Rot" class="form-control" />
+                <span asp-validation-for="Belag.Menge_Rot" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Belag.Marke" class="control-label"></label>
+                <input asp-for="Belag.Marke" class="form-control" />
+                <span asp-validation-for="Belag.Marke" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Belag.Name" class="control-label"></label>
+                <input asp-for="Belag.Name" class="form-control" />
+                <span asp-validation-for="Belag.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Belag.Preis" class="control-label"></label>
+                <input asp-for="Belag.Preis" class="form-control" />
+                <span asp-validation-for="Belag.Preis" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Belag.Bildpfad" class="control-label"></label>
+                <input asp-for="Belag.Bildpfad" class="form-control" />
+                <span asp-validation-for="Belag.Bildpfad" class="text-danger"></span>
+            </div>
+            <div>
+                <p>   <label>Mitarbeider ID</label>    </p>
+
+                <p><textarea asp-for="Mitarbeiderid"></textarea>  </p>
+            </div>
+
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

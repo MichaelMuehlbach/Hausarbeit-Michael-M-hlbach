@@ -1,0 +1,101 @@
+﻿@page
+@model Tischtennis_Shop.Pages.Belaege.IndexModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<h1>Mitarbeiterbereich</h1>
+<p>
+    <a asp-page="Create" class="btn btn-success">Create New</a>
+</p>
+
+
+<form method="post">
+    <p>
+        Id: <input type="text" asp-for="Gesuchte_ID" />
+        <input type="submit" value="Suchen" />
+    </p>
+</form>
+
+
+<table class="table" style="float:left;width:49.5%;">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Belag[0].ID)
+            </th>
+
+            <th width="180">
+                @Html.DisplayNameFor(model => model.Belag[0].Name)
+            </th>
+
+            <th   >
+                @Html.DisplayNameFor(model => model.Belag[0].Marke)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Belag)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td width="180">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td >
+                    @Html.DisplayFor(modelItem => item.Marke)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<table class="table" style="float:left;width:29.5%;">
+    <thead>
+        <tr>
+            <th>
+                Lätzde Änderung von
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Mitarbeiter)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<table class=" table" style="float:left;width:19.5%;">
+    <thead>
+        <tr>
+            <th>
+                Optionen
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Belag)
+        {
+            <tr>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<p>
+    <br />
+    <br />
+    <a href="/Index"> Zurück zur Hauptseite </a>
+</p>
+<label>--------------------------------------------------------------------------------------------------------------------------------------------------------------</label>

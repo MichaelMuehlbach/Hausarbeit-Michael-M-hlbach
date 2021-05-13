@@ -1,0 +1,79 @@
+﻿@page
+@model Tischtennis_Shop.Pages.Rechnung_DruckenModel
+@{
+    ViewData["Title"] = "Rechnung Anzeigen";
+}
+<p>
+    <h1> Rechnung</h1>
+</p>
+<p>
+    <label> @Model.Kunde.Vorname </label>
+    <label> @Model.Kunde.Nachname </label>
+    <br />
+    <label> @Model.Kunde.Straße </label>
+    <label> @Model.Kunde.Hausnummer </label>
+    <br />
+    <label> @Model.Kunde.Postleitzahl </label>
+    <label> @Model.Kunde.Ort </label>
+</p>
+<p>
+    <label>Kundennummer: </label>
+    <label>@Model.Kunde.ID</label>
+</p>
+<p>
+    <label>Rechnungsnummer: </label>
+    <label>@Model.Rechnung.ID</label>
+</p>
+<p>
+    <h3>Rechnungsposten</h3>
+</p>
+<table>
+    <thead>
+        <tr>
+            <th width="200">
+                Name
+            </th>
+            <th width="100">
+                Farbe
+            </th>
+            <th width="100">
+                Menge
+            </th>
+            <th width="100">
+                Preis je Stück
+            </th>
+            <th width="100">
+                Gesamt Pries
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Ware)
+        {
+            <tr>
+                <td width="100">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td width="100">
+                    @Html.DisplayFor(modelItem => item.Farbe)
+                </td>
+                <td width="100">
+                    @Html.DisplayFor(modelItem => item.Menge)
+                </td>
+                <td width="100">
+                    @Html.DisplayFor(modelItem => item.Preis_je_Stueck)
+                </td>
+                <td width="100">
+                    @Html.DisplayFor(modelItem => item.Gesamtpreis)
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+<p>
+    <br />
+    <br />
+    <label>Gesamtbetrag in Euro: </label>
+    <label>@Model.Rechnung.Gesamtbetrag</label>
+

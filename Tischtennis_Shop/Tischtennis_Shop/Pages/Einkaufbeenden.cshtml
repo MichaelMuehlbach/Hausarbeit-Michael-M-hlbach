@@ -1,0 +1,80 @@
+﻿@page
+@model Tischtennis_Shop.Pages.EinkaufbeendenModel
+@{
+    ViewData["Title"] = "Einkauf Beenden";
+}
+<p>
+    <label>Ihre gekauften Beläge</label>
+</p>
+<table>
+    <thead>
+        <tr>
+            <th width="150">
+                Name
+            </th>
+            <th width="100">
+                Farbe
+            </th>
+            <th width="100">
+                Menge
+            </th>
+            <th width="100">
+                Preis je Stück
+            </th>
+            <th width="100">
+                Gesamt Preis
+            </th>
+        </tr>
+    <tbody>
+        @foreach (var item in Model.Ware)
+        {
+            <tr>
+                <td width="150">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td width="100">
+                    @Html.DisplayFor(modelItem => item.Farbe)
+                </td>
+                <td width="100">
+                    @Html.DisplayFor(modelItem => item.Menge)
+                </td>
+                <td width="50">
+                    @Html.DisplayFor(modelItem => item.Preis_je_Stueck)
+                </td>
+                <td width="50">
+                    @Html.DisplayFor(modelItem => item.Gesamtpreis)
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+<p>
+    Zwischensumme : <label>@Model.Zwischensumme</label>
+</p>
+
+<p>
+    <br />
+    <br />
+    <br />
+    <br />
+    <label>Wenn sie noch kein Kunde bei uns sind klicken ´Sie bitte folgenden Button</label>
+    <br />
+    
+    <a href="Kunden/Create" class="btn btn-success">Regiestrieren</a>
+</p>
+<p>
+
+    <br />
+    <br />
+    <br />
+    <br /> 
+    <label>Wenn sie schon Kunde bei uns sind klicken Sie bitte folgenden Button</label>
+    <br />
+    
+    <a href="/Kundeschonvorhanden" class="btn btn-success">Kaufen</a>
+</p>
+
+
+

@@ -1,0 +1,43 @@
+﻿@page
+@model Tischtennis_Shop.Pages.Verkaufte_Waren.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Verkaufte_Ware</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Verkaufte_Ware.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Verkaufte_Ware.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Verkaufte_Ware.Farbe)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Verkaufte_Ware.Farbe)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Verkaufte_Ware.Menge)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Verkaufte_Ware.Menge)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Verkaufte_Ware.Preis_je_Stueck)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Verkaufte_Ware.Preis_je_Stueck)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Verkaufte_Ware.ID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

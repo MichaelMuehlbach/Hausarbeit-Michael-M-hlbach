@@ -1,0 +1,122 @@
+﻿@page
+@model Tischtennis_Shop.Pages.IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+<body>
+    <p>
+        <img src="~/Bilder/01.jpg" height="200" width="200" />
+        <label  > Tischtennis SHOP </label>
+        <img src="~/Bilder/02.jpg" height="200" width="200" />
+    </p>
+    <p>
+        <a href="Warenkorb" class="btn btn-success"> Warenkorb </a>
+        <a class="btn btn-success" href="Einkaufbeenden">Einkaufbeenden </a>
+        <a href="Mitarbeiterbereich" class="btn btn-success">Mitarbeiterbereich</a>
+    </p>
+    <p>
+        <label>Bitte wälen Sie Unten mindestens eine der Suchmöglichkeiten aus und Drücken sie dan auf Suchen  </label>
+        
+    </p>
+    <form>
+        <p>
+            <select asp-for="Markenliste" asp-items="Model.Belaegemenge">
+                <option value="">alle Marken</option>
+            </select>
+            <select asp-for="Artliste" asp-items="Model.Artmenge">
+                <option value="">alle Materialarten</option>
+            </select>
+            <select asp-for="Preislistemin">
+                <option value="">Minimum</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="40">40</option>
+                <option value="50">50</option>
+                <option value="60">60</option>
+            </select>
+            <select asp-for="Preislistemax">
+                <option value="">Maximum</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="40">40</option>
+                <option value="50">50</option>
+                <option value="60">60</option>
+            </select>
+            <input type="submit" value="Suchen" />
+        </p>
+    </form>
+</body>
+<table class="table">
+    <thead>
+        <tr>
+            <th width="200">
+                Bild
+            </th>
+            <th width="100">
+                Name
+            </th>
+            <th width="100">
+                Marke
+            </th>
+            <th width="100">
+                Belag Art
+            </th>
+            <th width="50">
+                Preis
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Belag)
+        {
+        <tr>
+            <td width="200">
+                <img src="@item.Bildpfad" height="200" width="200" />
+            </td>
+            <td width="100">
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td width="100">
+                @Html.DisplayFor(modelItem => item.Marke)
+            </td>
+            <td width="100">
+                @Html.DisplayFor(modelItem => item.Belag_Art)
+            </td>
+            <td width="50">
+                @Html.DisplayFor(modelItem => item.Preis)
+            </td>
+            <td>
+                <a asp-page="./BelaegeKaufen" asp-route-id="@item.ID">Kaufen</a> |
+
+            </td>
+            <td></td>
+        </tr>
+         }
+    </tbody>
+</table>
+
+<p>
+    Interesante Tischtennis Seiten und Vereine aus der Region 
+
+</p>
+<p>
+    <img src="~/Bilder/03.jpg" height="200" width="200" />
+
+    <a href="http://ttbl.de/">TTBL</a>
+
+
+
+    <img src="~/Bilder/04.png" height="200" width="200" />  
+
+    <a href="https://www.ttc-neuweiler.de/">TTC Neuweiler</a>
+
+    <img src="~/Bilder/05.png" height="200" width="300" />
+
+    <a href="http://www.ttc-altenwald.de/" >TTC Altenwald </a>
+
+
+</p>
+

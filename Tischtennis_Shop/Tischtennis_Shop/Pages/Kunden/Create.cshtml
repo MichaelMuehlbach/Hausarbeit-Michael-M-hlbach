@@ -1,0 +1,57 @@
+﻿@page
+@model Tischtennis_Shop.Pages.Kunden.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Kunde</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Kunde.Vorname" class="control-label"></label>
+                <input asp-for="Kunde.Vorname" class="form-control" />
+                <span asp-validation-for="Kunde.Vorname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Kunde.Nachname" class="control-label"></label>
+                <input asp-for="Kunde.Nachname" class="form-control" />
+                <span asp-validation-for="Kunde.Nachname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Kunde.Straße" class="control-label"></label>
+                <input asp-for="Kunde.Straße" class="form-control" />
+                <span asp-validation-for="Kunde.Straße" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Kunde.Ort" class="control-label"></label>
+                <input asp-for="Kunde.Ort" class="form-control" />
+                <span asp-validation-for="Kunde.Ort" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Kunde.Postleitzahl" class="control-label"></label>
+                <input asp-for="Kunde.Postleitzahl" class="form-control" />
+                <span asp-validation-for="Kunde.Postleitzahl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Kunde.Hausnummer" class="control-label"></label>
+                <input asp-for="Kunde.Hausnummer" class="form-control" />
+                <span asp-validation-for="Kunde.Hausnummer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

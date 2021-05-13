@@ -1,0 +1,67 @@
+﻿@page
+@model Tischtennis_Shop.Pages.Belaege.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Belag</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Belag.Belag_Art)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Belag.Belag_Art)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Belag.Menge_Schwarz)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Belag.Menge_Schwarz)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Belag.Menge_Rot)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Belag.Menge_Rot)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Belag.Marke)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Belag.Marke)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Belag.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Belag.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Belag.Preis)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Belag.Preis)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Belag.Bildpfad)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Belag.Bildpfad)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Belag.Mitarbeiter.ID)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MitarbeiterID)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Belag.ID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

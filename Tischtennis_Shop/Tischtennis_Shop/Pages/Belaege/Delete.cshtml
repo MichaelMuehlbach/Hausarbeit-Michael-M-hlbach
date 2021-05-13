@@ -1,0 +1,71 @@
+﻿@page
+@model Tischtennis_Shop.Pages.Belaege.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Belag</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Belag.Belag_Art)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Belag.Belag_Art)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Belag.Menge_Schwarz)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Belag.Menge_Schwarz)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Belag.Menge_Rot)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Belag.Menge_Rot)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Belag.Marke)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Belag.Marke)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Belag.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Belag.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Belag.Preis)
+        </dt>
+        <dd class="col-sm-10">   
+            @Html.DisplayFor(model => model.Belag.Preis)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Belag.Bildpfad)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Belag.Bildpfad)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Belag.Mitarbeiter)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MitarbeiterID)
+        </dd>
+
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Belag.ID" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>
