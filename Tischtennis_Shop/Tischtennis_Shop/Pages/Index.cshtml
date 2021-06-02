@@ -1,26 +1,33 @@
-﻿@page
+﻿ 
+
+
+
+@page
+
 @model Tischtennis_Shop.Pages.IndexModel
+
+
 @{
     ViewData["Title"] = "Home page";
 }
 <body>
     <p>
         <img src="~/Bilder/01.jpg" height="200" width="200" />
-        <label  > Tischtennis SHOP </label>
+        <label style="height:100px;width:600px;font-size:77px">Tischtennis SHOP</label>
         <img src="~/Bilder/02.jpg" height="200" width="200" />
     </p>
     <p>
-        <a href="Warenkorb" class="btn btn-success"> Warenkorb </a>
+        <a href="Warenkorb" class="btn btn-success">Warenkorb </a>
         <a class="btn btn-success" href="Einkaufbeenden">Einkaufbeenden </a>
         <a href="Mitarbeiterbereich" class="btn btn-success">Mitarbeiterbereich</a>
     </p>
     <p>
-        <label>Bitte wälen Sie Unten mindestens eine der Suchmöglichkeiten aus und Drücken sie dan auf Suchen  </label>
+        <label>Bitte wählen Sie Unten mindestens eine der Suchmöglichkeiten aus und Drücken sie dann auf Suchen  </label>
         
     </p>
     <form>
         <p>
-            <select asp-for="Markenliste" asp-items="Model.Belaegemenge">
+            <select asp-for="Markenliste" asp-items="Model.Markemenge">
                 <option value="">alle Marken</option>
             </select>
             <select asp-for="Artliste" asp-items="Model.Artmenge">
@@ -35,6 +42,7 @@
                 <option value="50">50</option>
                 <option value="60">60</option>
             </select>
+
             <select asp-for="Preislistemax">
                 <option value="">Maximum</option>
                 <option value="10">10</option>
@@ -44,6 +52,7 @@
                 <option value="50">50</option>
                 <option value="60">60</option>
             </select>
+
             <input type="submit" value="Suchen" />
         </p>
     </form>

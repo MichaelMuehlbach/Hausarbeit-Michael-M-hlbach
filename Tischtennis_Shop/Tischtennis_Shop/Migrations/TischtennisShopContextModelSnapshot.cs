@@ -100,6 +100,9 @@ namespace Tischtennis_Shop.Migrations
                     b.Property<string>("Passwort")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Salt")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Vorname")
                         .HasColumnType("nvarchar(max)");
 
@@ -168,14 +171,14 @@ namespace Tischtennis_Shop.Migrations
             modelBuilder.Entity("Tischtennis_Shop.Models.Belag", b =>
                 {
                     b.HasOne("Tischtennis_Shop.Models.Mitarbeiter", "Mitarbeiter")
-                        .WithMany("zulaetzgeaendeterbelag")
+                        .WithMany("Belag")
                         .HasForeignKey("MitarbeiterID");
                 });
 
             modelBuilder.Entity("Tischtennis_Shop.Models.Rechnung", b =>
                 {
                     b.HasOne("Tischtennis_Shop.Models.Kunde", "Kunde")
-                        .WithMany("Kunden_Rechnungen")
+                        .WithMany("Rechnung")
                         .HasForeignKey("KundeID");
                 });
 
@@ -186,7 +189,7 @@ namespace Tischtennis_Shop.Migrations
                         .HasForeignKey("BelagID");
 
                     b.HasOne("Tischtennis_Shop.Models.Rechnung", "Rechnung")
-                        .WithMany("Gekaufte_Waren")
+                        .WithMany("Verkaufte_Ware")
                         .HasForeignKey("RechnungID");
                 });
 #pragma warning restore 612, 618

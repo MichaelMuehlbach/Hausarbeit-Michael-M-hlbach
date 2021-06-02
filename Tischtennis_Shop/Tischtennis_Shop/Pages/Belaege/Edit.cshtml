@@ -40,20 +40,19 @@
                 <span asp-validation-for="Belag.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Belag.Preis" class="control-label"></label>
-                <input asp-for="Belag.Preis" class="form-control" />
-                <span asp-validation-for="Belag.Preis" class="text-danger"></span>
+                <label>Preis</label>
+                <input asp-for="eingabepreis" class="form-control" />
+                <span asp-validation-for="eingabepreis" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Belag.Bildpfad" class="control-label"></label>
                 <input asp-for="Belag.Bildpfad" class="form-control" />
                 <span asp-validation-for="Belag.Bildpfad" class="text-danger"></span>
             </div>
-
-            <div>
-              <p>   <label>Mitarbeider ID</label>    </p>  
-                
-             <p><textarea asp-for="Mitarbeiderid"></textarea>  </p>
+            <div class="form-group">
+                <label>Mitarbeiter ID</label>
+                <input asp-for="Mitarbeiderid" class="form-control" />
+                <span asp-validation-for="Mitarbeiderid" class="text-danger"></span>
             </div>
 
 

@@ -24,7 +24,8 @@ namespace Tischtennis_Shop.Models
         public int Hausnummer { get; set; }
 
 
-   
+        public ICollection<Rechnung> Rechnung { get; set; }
+        
 
 
 

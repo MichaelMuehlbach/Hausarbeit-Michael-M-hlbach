@@ -13,13 +13,15 @@ namespace Tischtennis_Shop.Models
 
         public string Nachname { get; set; }
 
+        public string Salt { get; set; }
+
         public string Passwort { get; set; }
 
-  
 
-       
+        public ICollection<Belag> Belag { get; set; }
 
-       
+
+
 
 
     }

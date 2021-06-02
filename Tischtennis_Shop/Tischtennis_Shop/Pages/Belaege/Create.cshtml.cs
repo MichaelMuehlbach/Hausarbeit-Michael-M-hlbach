@@ -22,61 +22,80 @@ namespace Tischtennis_Shop.Pages.Belaege
         [BindProperty(SupportsGet = true)]
         public string Mitarbeiderid { get; set; }
 
+        [BindProperty(SupportsGet = true)]
+        public string eingapreis { get; set; }
+
+
         public Mitarbeiter Mitarbeiter { get; set; }
+
+        [BindProperty(SupportsGet = true)]
+        public Belag Belag { get; set; }
 
         public IActionResult OnGet()
         {
             return Page();
         }
 
-        [BindProperty]
-        public Belag Belag { get; set; }
+      
 
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
+
+            // Hier wird geschaut ob alles der Valitierung entspricht wenn nicht wird die Seite erneut angezeigt
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
+            // DEklaration Variable MitarbeiderID
 
+            int MitarbeiderID = 0;
 
-            int Mid = 0;
+            // Abfangen des Falles eingabeid ist Null dann aufrufen der Seite FehlerMitarbeiternummer
 
-
-
-            if (Mitarbeiderid == null)
+            if (this.Mitarbeiderid == null)
             {
-                return RedirectToPage("/FehlerMitarbeiternummer");
+                return base.RedirectToPage("/FehlerMitarbeiternummer");
             }
+
+            // Sonst MitarbeiderID ist = eingabeid
             else
             {
-                Mid = Convert.ToInt32(Mitarbeiderid);
+                MitarbeiderID = Convert.ToInt32(this.Mitarbeiderid);
 
 
             }
 
+            // Suchen des Mitarbeiters mit der ID von Oben
 
+            Mitarbeiter = _context.Mitarbeiter.FirstOrDefault(x => x.ID == MitarbeiderID);
 
-            Mitarbeiter = _context.Mitarbeiter.FirstOrDefault(x => x.ID == Mid);
-
-
+            // Abfangen des Falles Mitarbeiter nict vorhanden
             if (Mitarbeiter == null)
             {
                 return RedirectToPage("/FehlerMitarbeiternummer");
             }
 
+            // Festlegen des Mitarbeiters der den Belag angelegt hat
+
             Belag.Mitarbeiter = Mitarbeiter;
 
+            // Festlegen des Preises des Belages durch umwandeln der String eingabe
+
+            Belag.Preis = Convert.ToDecimal(eingapreis);
 
 
-
-
+            // Hinzufügen des Belages in der Datenbank
 
             _context.Belag.Add(Belag);
+
+            // Speichern der Änderung
+
             await _context.SaveChangesAsync();
+
+            // zurück zur Index Seite
 
             return RedirectToPage("./Index");
         }

@@ -39,37 +39,26 @@ namespace Tischtennis_Shop.Pages.Belaege
 
         public async Task OnGetAsync()
         {
-
+             
+            // Suchen aller Belaege
             var Belagmenge = from m in _context.Belag select m;
-
-            var Mitarbeitermenge = from m in _context.Belag orderby m.ID   select m.Mitarbeiter.ID ;       
-
+            // Suchen aller Mitarbeidter die Edwas geändert haben
+            var Mitarbeitermenge = from m in _context.Belag orderby m.ID   select m.Mitarbeiter.ID ;     
+            // Hinzufügen der Belagmenge zu IList Belag
             Belag = Belagmenge.ToList();
-
-
-            
-
-            Mitarbeiter = Mitarbeitermenge.ToList();
-
-           
+            // Hinzufügen der Mitarbeidermenge zu IList Mitarbeider
+            Mitarbeiter = Mitarbeitermenge.ToList();        
         }
-
-
         public async Task OnPostAsync()
         {
+            // Suchen des Belages der auf die ID zutrifft
             var Belagmenge = from m in _context.Belag where m.ID == Gesuchte_ID select m;
-
+            // Suchen des Mitarbeiters der auf die Belag ID zutrifft
             var Mitarbeitermenge = from m in _context.Belag where m.ID == Gesuchte_ID  orderby m.ID select m.Mitarbeiter.ID;
-
+            // Hinzufügen der Belagmenge zu IList Belag
             Belag = Belagmenge.ToList();
-
-
-
-
+            // Hinzufügen der Mitarbeidermenge zu IList Mitarbeider
             Mitarbeiter = Mitarbeitermenge.ToList();
-
-
-
         }
 
 

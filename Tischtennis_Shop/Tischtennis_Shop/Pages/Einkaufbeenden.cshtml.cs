@@ -24,26 +24,26 @@ namespace Tischtennis_Shop.Pages
 
         public void OnGet()
         {
+            // Deklarieren der Varaible Anzahl
             int Anzahl = 0;
+            // Heraussuchen der Verkauften Waren wo die Rechnung noch nicht gesetz wurde
             var Waremenge = from w in _context.Verkaufte_Ware where w.Rechnung == null select w;
-
+           // Hochzählen von Anzahl
            foreach (Verkaufte_Ware w in Waremenge) 
             {
                 Anzahl = Anzahl + 1;
             }
-
-            
+            // Abfangen das noch nichts gekauft wurde
             if (Anzahl == 0) 
             {
                 Response.Redirect("/Warenkorbleer_BeendenEinkauf");
             }
-
-
+            // Berechnung der Zwischesumme der rechnung
             foreach (Verkaufte_Ware vw in Waremenge)
             {
                 Zwischensumme = Zwischensumme + vw.Gesamtpreis;
             }
-
+            // Hinzufügen der Warenmenge zur IList Ware
             Ware = Waremenge.ToList();
         }
     }

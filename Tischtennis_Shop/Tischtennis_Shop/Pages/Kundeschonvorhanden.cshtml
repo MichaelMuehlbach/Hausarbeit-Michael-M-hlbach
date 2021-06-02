@@ -6,36 +6,32 @@
 
 <h1>Kunden Konto Bestätigung</h1>
 
-<form method="post">
-    <p>
-        <label>Bitte geben sie ihren Vornamen ein. </label>
-    </p>
-    <p>
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <div  class="form-group">
+<div class="row">
+    <div class="col-md-4">
 
-            <input asp-for="Vorname" class="form-control" />
-            <span asp-validation-for="Vorname" class="text-danger"></span>
-        </div>
-    </p>
-    <p>
-        <label>Bitte geben sie ihren Nachnamen ein </label>
-    </p>
-    <p>
-        
+        <form method="post">
 
-        <div class="form-group">
 
-            <input asp-for="Nachname" class="form-control" />
-            <span asp-validation-for="Nachname" class="text-danger"></span>
-        </div>
-    </p>
-    <p>
-        <label> Bitte geben sie ihre Kunden Nummer ein </label>
-    </p>
-    <p>
-        <textarea asp-for="ideingabe"></textarea>
-    </p>
-    <input type="submit" value="Rechnung generieren und Anzeigen" />
-</form>
- 
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label>Vornamen</label>
+                <input asp-for="Vorname" class="form-control" />
+                <span asp-validation-for="Vorname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Nachnamen</label>
+                <input asp-for="Nachname" class="form-control" />
+                <span asp-validation-for="Nachname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+
+                <label>Kundennummer</label>
+
+                <input asp-for="ideingabe" class="form-control" />
+                <span asp-validation-for="ideingabe" class="text-danger"></span>
+            </div>
+            <input type="submit" value="Anmelden" />
+        </form>
+    </div>
+</div>
+

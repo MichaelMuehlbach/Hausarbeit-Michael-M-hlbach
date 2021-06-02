@@ -23,6 +23,10 @@ namespace Tischtennis_Shop.Pages.Belaege
         [BindProperty(SupportsGet = true)]
         public string Mitarbeiderid { get; set; }
 
+        [BindProperty(SupportsGet = true)]
+        public string eingabepreis { get; set; }
+
+
 
         [BindProperty]
         public Belag Belag { get; set; }
@@ -31,28 +35,38 @@ namespace Tischtennis_Shop.Pages.Belaege
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
+
+            // Abfangen des Falles ID ist gleich null
+
             if (id == null)
             {
                 return NotFound();
             }
 
+            // Suchen des Belages
+
             Belag = await _context.Belag.FirstOrDefaultAsync(m => m.ID == id);
 
+            // Suchen des Besanden Mitarbeiters
 
             var Mitarbeiermenge = from m in _context.Belag where m.ID == id select m.Mitarbeiter.ID;
 
             foreach (int i in Mitarbeiermenge)
             {
+                // Convertirung der Mitarbeiter ID
 
                 Mitarbeiderid = Convert.ToString( i);
             }
 
-
+            // Abfangen fall Belag ist nicht vorhanden
 
             if (Belag == null )
             {
                 return NotFound();
             }
+            // Festlegen der Variable eingabepreis 
+            eingabepreis = Convert.ToString(Belag.Preis);
+
             return Page();
         }
 
@@ -62,7 +76,7 @@ namespace Tischtennis_Shop.Pages.Belaege
         {
             int Mid = 0;
 
-          
+            // Abfangen des Falles Mitarbeider ID ist gleich null
 
             if (Mitarbeiderid == null) 
             {
@@ -75,22 +89,27 @@ namespace Tischtennis_Shop.Pages.Belaege
 
             }
 
-          
+            // Suchen des Mitarbeiders
 
             Mitarbeiter = await _context.Mitarbeiter.FirstOrDefaultAsync(x => x.ID == Mid);
            
-
+            // Abfangen fall Mitarbeider ist nicht vorhanden
             if(Mitarbeiter ==  null) 
             {
               return  RedirectToPage("/FehlerMitarbeiternummer");
             }
+
+            // Belag.Mitarbeider wird gesetzt
               
             Belag.Mitarbeiter = Mitarbeiter;
 
-              
+
+            // Festlegen des Preises des Belages durch umwandeln der String eingabe
+
+            Belag.Preis = Convert.ToDecimal(eingabepreis);  
             
             
-            
+            // konntrolle ob alles mit der Valedierung stimmt
 
             if (!ModelState.IsValid)
             {
@@ -98,19 +117,23 @@ namespace Tischtennis_Shop.Pages.Belaege
             }
 
 
-            
+            // Aktualiesieren des Belages
             _context.Attach(Belag).State = EntityState.Modified;
 
             try
             {
-               
+               // Änderungen speichern
                 
                 await _context.SaveChangesAsync();
 
              
             }
+            // Abfangen des Fehlers beim speichern in der Datenbank
+
             catch (DbUpdateConcurrencyException)
             {
+
+                // Abfangen das der Belag nicht exsiestiert
                 if (!BelagExists(Belag.ID) )
                 {
                     return NotFound();
@@ -126,6 +149,9 @@ namespace Tischtennis_Shop.Pages.Belaege
 
         private bool BelagExists(int id)
         {
+
+            // Schauen ob belag dar ist
+
             return _context.Belag.Any(e => e.ID == id);
         }
 

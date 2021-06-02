@@ -15,7 +15,7 @@ namespace Tischtennis_Shop.Models
 
         public Kunde Kunde { get; set; }
 
-
+        public ICollection<Verkaufte_Ware> Verkaufte_Ware { get; set; }
        
 
     }
